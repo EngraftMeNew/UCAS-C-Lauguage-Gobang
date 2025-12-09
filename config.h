@@ -4,6 +4,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 #include <stdio.h>
+#include "config.h"
 
 #define BOARD_SIZE 15
 
@@ -15,5 +16,6 @@
 
 #define SCORE_FIVE 10000
 #define SCORE_LIVE_FOUR 9999
+
 
 #endif

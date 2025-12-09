@@ -7,8 +7,8 @@
 int main()
 {
     init_board();
-    board[5][7] = 1;
-    board[6][7] = 2;
+    input_move();
+    input_move();
     display_board();
     return 0;
 }

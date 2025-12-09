@@ -8,4 +8,5 @@
 extern int board[BOARD_SIZE][BOARD_SIZE];
 void init_board();
 void display_board();
+void input_move();
 #endif

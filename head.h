@@ -29,9 +29,12 @@ typedef struct
     int rush_four;
     int live_three;
     int sleep_three;
-} pattern;
+} PatternStat; // 统计这个点所有方向上的棋形数量
 
-void analyze_line(int row, int col, int color, int dx, int dy, pattern *out); // 单独分析某个方向
-void analyze_point_patterns(int row, int col, int color, pattern *out);       // 某个点
+void analyze_line(int row, int col, int color, int dx, int dy, PatternStat *out); // 单独分析某个方向
+void analyze_point_patterns(int row, int col, int color, PatternStat *out);       // 某个点
+
+int extract_line(int row, int col, int dx, int dy, char line[LINE_LEN + 1], int *center_idx);
+int match_pttern(const char *line, int center_idx, const char *pattern);
 
 #endif

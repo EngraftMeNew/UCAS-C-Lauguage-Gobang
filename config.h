@@ -17,5 +17,7 @@
 #define SCORE_FIVE 10000
 #define SCORE_LIVE_FOUR 9999
 
+// 一条线的最大长度（取9格：中心±4）
+#define LINE_LEN 9
 
 #endif

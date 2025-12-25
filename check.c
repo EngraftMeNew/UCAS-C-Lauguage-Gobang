@@ -7,7 +7,7 @@
 
 int is_in_board(int row, int col)
 {
-    return (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE);
+    return (row >= 0 && row <= BOARD_SIZE && col >= 0 && col <= BOARD_SIZE);
 }
 
 int is_legal_move(int row, int col, int color)
@@ -40,6 +40,7 @@ int count_continuous(int row, int col, int dx, int dy, int color)
         r -= dy;
         c -= dx;
     }
+    return cnt;
 }
 
 int five_check(int row, int col, int color)
@@ -53,7 +54,7 @@ int five_check(int row, int col, int color)
     return 0;
 }
 
-//提取出一个方向上左右各四个到Line数组，center_idx为当前子坐标
+// 提取出一个方向上左右各四个到Line数组，center_idx为当前子坐标
 int extract_line(int row, int col, int dx, int dy, int color, char line[LINE_LEN + 1], int *center_idx)
 {
     int idx = 0;

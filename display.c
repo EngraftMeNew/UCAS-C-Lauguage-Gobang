@@ -6,55 +6,66 @@
 #include "head.h"
 #include <stdio.h>
 
-void display_board()
+int last_row_black;
+int last_col_black;
+int last_row_white;
+int last_col_white;
+int last_color;
+
+static void put_cell(char rowbuf[], int col, const char *utf8_piece)
 {
-    int i, j;
+    int pos = col * CHARSIZE;
+    memcpy(&rowbuf[pos], utf8_piece, CHARSIZE);
+}
 
-    // 打印列号（1~15）
-    printf("   ");
-    for (j = 0; j < BOARD_SIZE; j++)
+void DisplayBoard(void)
+{
+    // 1) 先把空棋盘模板复制到显示棋盘
+    for (int r = 0; r < SIZE; r++)
     {
-        printf("%3d ", j + 1);
+        memcpy(Display_Board[r], Display_EmptyBoard[r], SIZE * CHARSIZE);
+        Display_Board[r][SIZE * CHARSIZE] = '\0';
     }
-    printf("\n");
 
-    // 每一行
-    for (i = 0; i < BOARD_SIZE; i++)
+    // 2) 把棋子写进去
+    for (int r = 0; r < SIZE; r++)
     {
-        int col;
-
-        // 打印分隔线：+---+---+...
-        printf("   ");
-        for (col = 0; col < BOARD_SIZE; col++)
+        for (int c = 0; c < SIZE; c++)
         {
-            printf("+---");
+            int v = board[r][c];
+            if (v == 1)
+            {
+                // 黑棋：如果是当前落子点，用 ▲
+                if (r == last_row_black && c == last_col_black && last_color == 1)
+                    put_cell(Display_Board[r], c, play1CurrentPic);
+                else
+                    put_cell(Display_Board[r], c, play1Pic);
+            }
+            else if (v == 2)
+            {
+                // 白棋：如果是当前落子点，用 △
+                if (r == last_row_white && c == last_col_white && last_color == 2)
+                    put_cell(Display_Board[r], c, play2CurrentPic);
+                else
+                    put_cell(Display_Board[r], c, play2Pic);
+            }
+            // v==0 空，不改模板
         }
-        printf("+\n");
-
-        // 打印行号
-        printf("%2d ", i + 1);
-
-        // 打印每一列的格子和棋子
-        for (j = 0; j < BOARD_SIZE; j++)
-        {
-            const char *ch;
-            if (board[i][j] == 1)
-                ch = "X"; // 黑子
-            else if (board[i][j] == 2)
-                ch = "O"; // 白子
-            else
-                ch = " "; // 空
-
-            printf("| %s ", ch);
-        }
-        printf("|\n");
     }
 
-    // 最底下一条分隔线
-    printf("   ");
-    for (j = 0; j < BOARD_SIZE; j++)
+    // 3) 清屏
+    // system("cls");
+
+    // 4) 打印
+    printf("  ");
+    for (int c = 0; c < SIZE; c++)
+        printf("%d", c+1);
+    putchar('\n');
+
+    // === 4) 打印每行：行号 + 棋盘行 ===
+    for (int r = 0; r < SIZE; r++)
     {
-        printf("+---");
+        printf("%2d ", r+1);      // 行号
+        puts(Display_Board[r]); // 原来的棋盘行字符串
     }
-    printf("+\n");
 }

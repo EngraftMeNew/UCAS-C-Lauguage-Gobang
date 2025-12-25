@@ -7,6 +7,8 @@
 #include "config.h"
 
 #define BOARD_SIZE 15
+#define SIZE BOARD_SIZE
+#define CHARSIZE 3
 
 #define EMPTY 0
 #define BLACK 1
@@ -19,5 +21,7 @@
 
 // 一条线的最大长度（取9格：中心±4）
 #define LINE_LEN 9
+
+#define opposite_color(color) ((color) == BLACK ? WHITE : BLACK)
 
 #endif

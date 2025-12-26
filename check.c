@@ -5,6 +5,8 @@
 #include "head.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <math.h>
 
 const char *pattern_live_four = "011110";
 const char *pattern_rush_four = "011112|211110|10111|11011|11101";
@@ -32,11 +34,11 @@ int is_legal_move(int row, int col, int color)
         for (int i = 0; i < 4; i++)
         {
             int len = count_continuous(row, col, dirs[i][0], dirs[i][1], color);
-            if (len = 5)
+            if (len == 5)
             {
                 board[row][col] = 0; // 五连强制解禁
             }
-            max_len = max(len, max_len);
+            max_len = fmax(len, max_len);
         }
         if (max_len > 5)
         {

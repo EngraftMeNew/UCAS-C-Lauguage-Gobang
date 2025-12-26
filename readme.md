@@ -43,3 +43,4 @@ analyze_point_patterns(int row, int col, int color, PatternStat *out);       // 
 算杀部分
 minimax部分
 
+"now, we r in ldr's computer for test"

@@ -40,7 +40,10 @@ analyze_line(int row, int col, int color, int dx, int dy, PatternStat *out); // 
 analyze_point_patterns(int row, int col, int color, PatternStat *out);       // 某个点
 
 待做：
-算杀部分
+
 minimax部分
 
-"now, we r in ldr's computer for test"
+算杀部分
+
+
+

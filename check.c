@@ -8,7 +8,7 @@
 
 const char *pattern_live_four = "011110";
 const char *pattern_rush_four = "011112|211110|10111|11011|11101";
-const char *pattern_live_three = "0011100|0011010|0101100|0110100";
+const char *pattern_live_three = "011100|001110|011010|010110";
 const char *pattern_sleep_three = "0011120|0211100|2011100|0011200|0021100|0101120|0121000|0101210|0110120|0211010|0102110";
 // TODO:检查pattern是否正确
 

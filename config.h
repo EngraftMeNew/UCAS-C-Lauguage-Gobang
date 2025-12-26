@@ -24,5 +24,6 @@
 #define LINE_LEN 9
 
 #define opposite_color(color) ((color) == BLACK ? WHITE : BLACK)
-
+#define max(a, b) ((a) > (b) ? (a) : (b))
+#define min(a, b) ((a) < (b) ? (a) : (b))
 #endif

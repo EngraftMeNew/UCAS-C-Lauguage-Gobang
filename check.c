@@ -9,8 +9,8 @@
 const char *pattern_live_four = "011110";
 const char *pattern_rush_four = "011112|211110|10111|11011|11101";
 const char *pattern_live_three = "011100|001110|011010|010110";
-const char *pattern_sleep_three = "0011120|0211100|2011100|0011200|0021100|0101120|0121000|0101210|0110120|0211010|0102110";
-// TODO:检查pattern是否正确
+// const char *pattern_sleep_three = "0011120|0211100|2011100|0011200|0021100|0101120|0121000|0101210|0110120|0211010|0102110";
+//  TODO:检查pattern是否正确
 
 // row,col shoule be [0,15)
 int is_in_board(int row, int col)
@@ -27,15 +27,21 @@ int is_legal_move(int row, int col, int color)
     // TODO:加入黑棋的禁手判断
     if (color == BLACK)
     {
+        int max_len = 0;
         board[row][col] = color;
         for (int i = 0; i < 4; i++)
         {
             int len = count_continuous(row, col, dirs[i][0], dirs[i][1], color);
-            if (len > 5)
+            if (len = 5)
             {
-                board[row][col] = 0;
-                return 0; // overline禁手
+                board[row][col] = 0; // 五连强制解禁
             }
+            max_len = max(len, max_len);
+        }
+        if (max_len > 5)
+        {
+            board[row][col] = 0;
+            return 0;
         }
         PatternStat ps = {0};
         analyze_point_patterns(row, col, color, &ps);
@@ -187,7 +193,7 @@ void analyze_line(int row, int col, int color, int dx, int dy, PatternStat *out)
     out->live_four += match_pattern(line, center, pattern_live_four);
     out->rush_four += match_pattern(line, center, pattern_rush_four);
     out->live_three += match_pattern(line, center, pattern_live_three);
-    out->sleep_three += match_pattern(line, center, pattern_sleep_three);
+    // out->sleep_three += match_pattern(line, center, pattern_sleep_three);
 }
 
 // 某个点

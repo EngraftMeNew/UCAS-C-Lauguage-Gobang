@@ -60,7 +60,7 @@ void init_pattern_stats(void);
 extern const char *pattern_live_four;
 extern const char *pattern_rush_four;
 extern const char *pattern_live_three;
-extern const char *pattern_sleep_three;
+//extern const char *pattern_sleep_three;
 
 int extract_line(int row, int col, int dx, int dy, int color, char line[LINE_LEN + 1], int *center_idx);
 int match_pattern(const char *line, int center_idx, const char *pattern);

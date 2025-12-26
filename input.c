@@ -7,8 +7,13 @@
 
 void input_move(int turn)
 {
-    int row, col;
-    scanf("%d %d", &row, &col);
+    int row;
+    char col_char;
+    scanf("%d %c", &row, &col_char);
+    //printf("Raw input: row=%d, col=%c\n", row, col_char);
+    row = 16 - row;      // 转化为数组下标
+    int col = col_char - 'a' + 1; // 转化为数组下标
+    //printf("You input move: row=%d, col=%d\n", row, col);
     if (!is_legal_move(row - 1, col - 1, turn))
     {
         printf("Illegal move. Try again.\n");

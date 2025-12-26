@@ -58,15 +58,15 @@ void DisplayBoard(void)
     // system("cls");
 
     // 4) 打印
-    printf("   ");
-    for (int c = 0; c < SIZE; c++)
-        printf("%c", 'a' + c);
-    putchar('\n');
 
     // === 4) 打印每行：行号 + 棋盘行 ===
     for (int r = 0; r < SIZE; r++)
     {
-        printf("%2d ", r+1);      // 行号
+        printf("%2d ", 15 - r); // 行号
         puts(Display_Board[r]); // 原来的棋盘行字符串
     }
+    printf("   ");
+    for (int c = 0; c < SIZE; c++)
+        printf("%c", 'a' + c);
+    putchar('\n');
 }

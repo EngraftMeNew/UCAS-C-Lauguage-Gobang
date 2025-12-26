@@ -5,6 +5,7 @@
 #include "config.h"
 #include "head.h"
 #include <stdio.h>
+#include <string.h>
 
 int last_row_black;
 int last_col_black;

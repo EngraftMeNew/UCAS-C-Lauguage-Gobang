@@ -33,7 +33,6 @@ extern int last_col_white;
 extern int last_color;
 
 void initBoard(void);
-void innerLayoutToDisplayArray(void);
 void DisplayBoard(void);
 // void init_board(void);
 // void display_board(void);
@@ -53,11 +52,21 @@ typedef struct
     int sleep_three;
 } PatternStat; // 统计这个点所有方向上的棋形数量
 
-void analyze_line(int row, int col, int color, int dx, int dy, PatternStat *out); // 单独分析某个方向
-void analyze_point_patterns(int row, int col, int color, PatternStat *out);       // 某个点
+extern PatternStat ps_black[SIZE][SIZE];
+extern PatternStat ps_white[SIZE][SIZE];
+// ps_[r][c] 表示：假设 color 落在 (r,c) 后，该点四方向的 PatternStat
+
+void init_pattern_stats(void);
+extern const char *pattern_live_four;
+extern const char *pattern_rush_four;
+extern const char *pattern_live_three;
+extern const char *pattern_sleep_three;
 
 int extract_line(int row, int col, int dx, int dy, int color, char line[LINE_LEN + 1], int *center_idx);
-int match_pttern(const char *line, int center_idx, const char *pattern);
+int match_pattern(const char *line, int center_idx, const char *pattern);
+
+void analyze_line(int row, int col, int color, int dx, int dy, PatternStat *out); // 单独分析某个方向
+void analyze_point_patterns(int row, int col, int color, PatternStat *out);       // 某个点
 
 /*===========================对战相关===========================*/
 void pvp(void);

@@ -20,6 +20,7 @@
 #define SCORE_LIVE_FOUR 9999
 
 // 一条线的最大长度（取9格：中心±4）
+//  必须是奇数！
 #define LINE_LEN 9
 
 #define opposite_color(color) ((color) == BLACK ? WHITE : BLACK)

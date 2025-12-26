@@ -45,13 +45,16 @@ const int dirs[4][2] = { //{dx,dy}
     {1, -1}};
 /*attention: dx 对应col dy对应row*/
 
+PatternStat ps_black[SIZE][SIZE];
+PatternStat ps_white[SIZE][SIZE];
+
 int main()
 {
 #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 #endif
-
+    init_pattern_stats();
     initBoard();
     int mode = 0;
     printf("==============================\n");
@@ -66,9 +69,28 @@ int main()
     {
         pvp();
     }
-
-    // input_move();
-    // input_move();
-    // display_board();
+    else if (mode == 2)
+    {
+        // TODO:pve模式待补充
+    }
     return 0;
+}
+
+void init_pattern_stats(void)
+{
+    for (int r = 0; r < SIZE; r++)
+    {
+        for (int c = 0; c < SIZE; c++)
+        {
+            ps_black[r][c].live_four = 0;
+            ps_black[r][c].rush_four = 0;
+            ps_black[r][c].live_three = 0;
+            ps_black[r][c].sleep_three = 0;
+
+            ps_white[r][c].live_four = 0;
+            ps_white[r][c].rush_four = 0;
+            ps_white[r][c].live_three = 0;
+            ps_white[r][c].sleep_three = 0;
+        }
+    }
 }

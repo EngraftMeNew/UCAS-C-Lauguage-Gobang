@@ -9,9 +9,9 @@ void input_move(int turn)
 {
     int row, col;
     scanf("%d %d", &row, &col);
-    if(row < 1 || row > BOARD_SIZE || col < 1 || col > BOARD_SIZE)
+    if (!is_legal_move(row - 1, col - 1, turn))
     {
-        printf("Move out of board. Try again.\n");
+        printf("Illegal move. Try again.\n");
         input_move(turn);
         return;
     }

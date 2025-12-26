@@ -58,9 +58,9 @@ void DisplayBoard(void)
     // system("cls");
 
     // 4) 打印
-    printf("  ");
+    printf("   ");
     for (int c = 0; c < SIZE; c++)
-        printf("%d", c+1);
+        printf("%c", 'a' + c);
     putchar('\n');
 
     // === 4) 打印每行：行号 + 棋盘行 ===
